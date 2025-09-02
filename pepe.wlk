@@ -1,8 +1,8 @@
 object pepe {
 	var property categoria = cadete
-    var property bonoPorResultados = porcentaje
-    var property bonoPorPresentismo = nulo
-    var property faltas = 1
+    var property bonoPorResultados = montoFijo
+    var property bonoPorPresentismo = normal    
+    var property faltas = 3
 
     method sueldo(){
         return self.neto() + self.bonoDeResultado() + self.bonoDePresentismo()
@@ -41,15 +41,16 @@ object roque{
 object ernesto{
     var compañero = sofia
     var property bonoPorPresentismo = nulo
-    var property faltas = 1
+    var property faltas = 0
 
     method sueldo(){
-        return compañero.neto() + self.bonoDePresentismo() + 9000
+        return compañero.neto() + self.bonoDePresentismo()
     }
     method bonoDePresentismo()= bonoPorPresentismo.bonoPresentismo(self)
     method cambiarCompañero(compañeroNuevo){
         compañero = compañeroNuevo
     }
+    method faltas()= faltas
 }
 
 
@@ -91,7 +92,7 @@ object porcentaje{
 }
 
 object montoFijo{
-    method bobonoResultadono() = 800
+    method bonoResultado() = 800
 }
 
 object nulo{
