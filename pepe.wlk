@@ -13,12 +13,77 @@ object pepe {
     method faltas()= faltas
 }
 
+
+object sofia{
+    var property categoria = cadete
+    var property bonoPorResultados = porcentaje
+    var property faltas = 1
+
+    method sueldo(){
+        return self.neto() + self.bonoDeResultado()
+    }
+
+    method neto()= 1.3*categoria.neto()
+    method bonoDeResultado()= bonoPorResultados.bonoResultado()
+    method faltas()= faltas
+}
+
+object roque{
+    var property bonoPorResultados = porcentaje
+
+    method sueldo(){
+        return self.neto() + self.bonoDeResultado() + 9000
+    }
+    method bonoDeResultado()= bonoPorResultados.bonoResultado()
+    method neto()= 28000
+}
+
+object ernesto{
+    var compañero = sofia
+    var property bonoPorPresentismo = nulo
+    var property faltas = 1
+
+    method sueldo(){
+        return compañero.neto() + self.bonoDePresentismo() + 9000
+    }
+    method bonoDePresentismo()= bonoPorPresentismo.bonoPresentismo(self)
+    method cambiarCompañero(compañeroNuevo){
+        compañero = compañeroNuevo
+    }
+}
+
+
 object cadete {
     method neto()= 20000
 }
 
 object gerente {
     method neto()= 15000
+}
+
+object vendedor{
+    var muchasVentas = true
+    method neto(){
+        if (muchasVentas){
+            1.25*16000}
+            else 16000
+    }
+
+    method activarAumentoPorMuchasVentas(){
+        muchasVentas = true
+    }
+
+    method desactivarAumentoPorMuchasVentas(){
+        muchasVentas = false
+    }
+}
+
+object medioTiempo{
+    var categoriaBase = gerente
+    method neto()= 0.5*categoriaBase.neto()
+    method cambiarCategoria(nuevaCategoria){
+        categoriaBase = nuevaCategoria
+    }
 }
 
 object porcentaje{
